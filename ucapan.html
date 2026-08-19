@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Kamu ❤️</title>
+
+    <style>
+
+        .foto-hujan {
+    position: fixed;
+    top: -150px;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 15px;
+    z-index: 0;
+    pointer-events: none;
+    animation: fotoJatuh linear forwards;
+}
+
+@keyframes fotoJatuh {
+    0% {
+        transform: translateY(-150px) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0.9;
+    }
+}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+            .emoji {
+    position: fixed;
+    top: -50px;
+    font-size: 25px;
+    z-index: 0;
+    pointer-events: none;
+    animation: jatuh linear forwards;
+}
+
+@keyframes jatuh {
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            overflow: hidden;
+        }
+
+        .page {
+            width: 90%;
+            max-width: 500px;
+            padding: 35px 25px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(12px);
+            border-radius: 25px;
+            color: white;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+
+            display: none;
+            animation: muncul 0.7s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Halaman pertama muncul */
+        #page1 {
+            display: block;
+        }
+
+        .heart {
+            font-size: 75px;
+            animation: detak 1s infinite;
+        }
+
+        @keyframes detak {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        h1 {
+            margin: 15px 0;
+            font-size: 32px;
+        }
+
+        p {
+            font-size: 17px;
+            line-height: 1.7;
+            margin: 20px 0;
+        }
+
+        button {
+            border: none;
+            padding: 13px 28px;
+            border-radius: 30px;
+            background: white;
+            color: #ff4f81;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.08);
+        }
+
+        @keyframes muncul {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<script>
+    const emojis = ["❤️", "💖", "💕", "💗", "💘", "🌹"];
+
+    function buatEmoji() {
+        const emoji = document.createElement("div");
+
+        emoji.classList.add("emoji");
+
+        emoji.innerText =
+            emojis[Math.floor(Math.random() * emojis.length)];
+
+        emoji.style.left = Math.random() * 100 + "vw";
+
+        emoji.style.fontSize =
+            Math.random() * 20 + 15 + "px";
+
+        emoji.style.animationDuration =
+            Math.random() * 3 + 3 + "s";
+
+        document.body.appendChild(emoji);
+
+        setTimeout(() => {
+            emoji.remove();
+        }, 6000);
+    }
+
+    setInterval(buatEmoji, 300);
+</script>
+
+<script>
+    function buatFoto() {
+
+        const foto = document.createElement("img");
+
+        const daftarFoto = [
+    "1.jpg",
+    "2.jpg",
+    "3.jpg",
+    "4.jpg",
+];
+
+foto.src = daftarFoto[
+    Math.floor(Math.random() * daftarFoto.length)
+];
+        foto.classList.add("foto-hujan");
+
+        // Posisi horizontal acak
+        foto.style.left = Math.random() * 100 + "vw";
+
+        // Ukuran acak
+        const ukuran = Math.random() * 40 + 60;
+        foto.style.width = ukuran + "px";
+        foto.style.height = ukuran + "px";
+
+        // Kecepatan jatuh acak
+        foto.style.animationDuration =
+            Math.random() * 4 + 4 + "s";
+
+        document.body.appendChild(foto);
+
+        // Hapus setelah selesai
+        setTimeout(() => {
+            foto.remove();
+        }, 9000);
+    }
+
+    // Membuat foto setiap 700ms
+    setInterval(buatFoto, 700);
+</script>
+
+<body>
+
+    <!-- ==================== -->
+    <!-- PAGE 1 -->
+    <!-- ==================== -->
+
+    <div class="page" id="page1">
+
+        <div class="heart">❤️</div>
+
+        <h1>Hai Bububbbbb naaa atuuu</h1>
+
+        <p>
+            acu mau nyampaikan sesuatu untuk kamuuu bububb
+            <br><br>
+            Tapi sebelum itu...
+            <br>
+            klik tombol di bawah duluuu yaawww 😊
+        </p>
+
+        <button onclick="nextPage(2)">
+    Lanjut ❤️
+</button>
+
+    </div>
+
+
+    <!-- ==================== -->
+    <!-- PAGE 2 -->
+    <!-- ==================== -->
+
+    <div class="page" id="page2">
+
+        <div class="heart">💗</div>
+
+        <h1>Acuu Punyaaa Ajakannn</h1>
+
+        <p>
+            akuuu pengennn ajakkk kamuuu mainnn 😊
+            <br><br>
+            Mau ndaaa mainn samaa acuuu
+            <br>
+            mainn apaa ajaaa boleee kokk terserah kamuuu 🥰
+        </p>
+
+        <button onclick="nextPage(4)">
+    nda dulu
+</button>
+
+<button onclick="nextPage(3)">
+    mauu ❤️
+</button>
+
+    </div>
+
+
+    <!-- ==================== -->
+    <!-- PAGE 3 -->
+    <!-- ==================== -->
+
+    <div class="page" id="page3">
+
+        <div class="heart">💖</div>
+
+        <h1>maacihhh tayangggg ❤️</h1>
+
+        <p>
+            bilangggg ajaaaa kamuuu mauunyaaa mainn apaaahhh 🥰🥰🥰
+            <br><br>
+
+            Aku tunggu yawwwww 🥰🥰🥰
+            <br><br>
+
+            <b>babayyyyyyyyyy tayanggggg ❤️</b>
+        </p>
+        
+    </div>
+
+    <!-- ==================== -->
+    <!-- PAGE 4 -->
+    <!-- ==================== -->
+
+    <div class="page" id="page4">
+
+        <div class="heart">💖</div>
+
+        <h1>lohhhh </h1>
+
+        <p>
+            kenapaaa ndaaa mauuu :c
+            <br><br>
+
+            kamuuu mauuunyaaa apaaaa????
+            <br><br>
+
+            <b>akuuu ngikuttt ajaaaa dehhhhh</b>
+        </p>
+        <button onclick="nextPage(2)">
+       berubah pikiran ❤️
+        </button>
+    </div>
+
+    <script>
+
+        function nextPage(pageNumber) {
+
+            // Sembunyikan semua halaman
+            document.querySelectorAll(".page").forEach(function(page) {
+                page.style.display = "none";
+            });
+
+            // Tampilkan halaman yang dipilih
+            document.getElementById("page" + pageNumber).style.display = "block";
+        }
+
+    </script>
+
+</body>
+</html>
